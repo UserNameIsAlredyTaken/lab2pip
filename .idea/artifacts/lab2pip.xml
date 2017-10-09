@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lab2pip">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab2pip</output-path>
+    <root id="archive" name="lab2pip.war">
+      <element id="javaee-facet-resources" facet="lab2pip/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="lab2pip" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,164 @@
+body {
+    background-image: url(images/petuh-i-kury.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.rip {
+    background-image: url(images/run.jpg);
+}
+
+.rightpic {
+    float: right;
+    border: 2px solid red;
+}
+
+.editor{
+    transition: 2s transform;
+    background-color: white;
+    position: fixed;
+    bottom: 82px;
+    margin-left: 50px;
+    width: 100px;
+    color:red;
+    border: 2px solid red;
+    border-radius: 100px;
+    font-weight:bold;
+    opacity: 0.7;
+}
+
+.editor_VB{
+    left: 4%;
+}
+
+.editor_DT{
+    right: 7%;
+}
+
+.player{
+    margin-top: 20px;
+}
+
+.mus_but{
+    bottom: 50px;
+    color:red;
+    border: 2px solid red;
+    border-radius: 100px;
+    background-color: white;
+    font-weight:bold;
+    outline: none;
+    opacity: 0.7;
+}
+
+.mus_but:active {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+
+}
+
+.play_paus{
+    width: 80px;
+}
+
+.plus_minus{
+    width: 23px;
+}
+
+.editor:hover {
+    transform: rotate(360deg) scale(2.5);
+    background-size: cover;
+    color : rgba(255,245,215,0);
+    opacity: 1;
+}
+
+.editor_VB:hover {
+    background-image: url(images/turnik1.jpg);
+}
+
+.editor_DT:hover {
+    background-image: url(images/turnik2.jpg);
+}
+
+.form{
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+#subm {
+    color:red;
+    outline: none;
+}
+
+#subm:active {
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
+
+}
+
+#field_r {
+    width: 173px;
+    height: 150%;
+    background-color: white;
+}
+#BV {
+    border-radius:  0 0 0 25px;
+    left: 38%;
+}
+
+#TD {
+    border-radius: 0 0  25px 0;
+    right: 36%;
+}
+
+#resultTable {
+    top:2%;
+    background-color: white;
+    opacity: 0.7;
+    left:40%;
+    position: absolute;
+    padding: 10px;
+}
+
+.rip_ {
+    color: black;
+    background-color: darkgreen;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.notrip {
+    color: red;
+    width: 80px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid red;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+#rip1:hover {
+    transform: rotate(360deg) scale(2.5);
+    background-image: url(images/ripturnik.jpg);
+}
+
+#rip2:hover {
+    transform: rotate(360deg) scale(2.5);
+    background-image: url(images/ripturnik2.jpg);
+}
+
+#circle_green {
+    width: 10px;
+    height: 10px;
+    background: green;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#circle_yellow {
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}

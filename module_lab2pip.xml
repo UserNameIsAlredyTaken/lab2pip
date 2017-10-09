@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_lab2pip" default="compile.module.lab2pip">
+  <dirname property="module.lab2pip.basedir" file="${ant.file.module_lab2pip}"/>
+  
+  <property name="module.jdk.home.lab2pip" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.lab2pip" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.lab2pip" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.lab2pip" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="lab2pip.output.dir" value="${module.lab2pip.basedir}/out/production/lab2pip"/>
+  <property name="lab2pip.testoutput.dir" value="${module.lab2pip.basedir}/out/test/lab2pip"/>
+  
+  <path id="lab2pip.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="lab2pip.module.production.classpath">
+    <path refid="${module.jdk.classpath.lab2pip}"/>
+    <path refid="library.glassfish_4.1.21.classpath"/>
+    <path refid="library.jersey-2.2.classpath"/>
+    <path refid="library.javax.classpath"/>
+    <path refid="library.javax_json.classpath"/>
+  </path>
+  
+  <path id="lab2pip.runtime.production.module.classpath">
+    <pathelement location="${lab2pip.output.dir}"/>
+    <path refid="library.jersey-2.2.classpath"/>
+    <path refid="library.javax.classpath"/>
+    <path refid="library.javax_json.classpath"/>
+  </path>
+  
+  <path id="lab2pip.module.classpath">
+    <path refid="${module.jdk.classpath.lab2pip}"/>
+    <pathelement location="${lab2pip.output.dir}"/>
+    <path refid="library.glassfish_4.1.21.classpath"/>
+    <path refid="library.jersey-2.2.classpath"/>
+    <path refid="library.javax.classpath"/>
+    <path refid="library.javax_json.classpath"/>
+  </path>
+  
+  <path id="lab2pip.runtime.module.classpath">
+    <pathelement location="${lab2pip.testoutput.dir}"/>
+    <pathelement location="${lab2pip.output.dir}"/>
+    <path refid="library.glassfish_4.1.21.classpath"/>
+    <path refid="library.jersey-2.2.classpath"/>
+    <path refid="library.javax.classpath"/>
+    <path refid="library.javax_json.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.lab2pip">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.lab2pip">
+    <patternset refid="excluded.from.module.lab2pip"/>
+  </patternset>
+  
+  <path id="lab2pip.module.sourcepath">
+    <dirset dir="${module.lab2pip.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.lab2pip" depends="compile.module.lab2pip.production,compile.module.lab2pip.tests" description="Compile module lab2pip"/>
+  
+  <target name="compile.module.lab2pip.production" depends="register.custom.compilers" description="Compile module lab2pip; production classes">
+    <mkdir dir="${lab2pip.output.dir}"/>
+    <javac2 destdir="${lab2pip.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.lab2pip}/javac">
+      <compilerarg line="${compiler.args.lab2pip}"/>
+      <bootclasspath refid="lab2pip.module.bootclasspath"/>
+      <classpath refid="lab2pip.module.production.classpath"/>
+      <src refid="lab2pip.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.lab2pip"/>
+    </javac2>
+    
+    <copy todir="${lab2pip.output.dir}">
+      <fileset dir="${module.lab2pip.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.lab2pip.tests" depends="register.custom.compilers,compile.module.lab2pip.production" description="compile module lab2pip; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.lab2pip" description="cleanup module">
+    <delete dir="${lab2pip.output.dir}"/>
+    <delete dir="${lab2pip.testoutput.dir}"/>
+  </target>
+</project>
