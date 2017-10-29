@@ -1,6 +1,5 @@
 package Lab2;
 
-
 public class Point {
     private double x;
     private double y;

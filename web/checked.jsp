@@ -12,7 +12,7 @@
     <script type="text/javascript" src="script.js"></script>
     <script src="jquery-3.2.1.js"></script>
     <script type="text/javascript">
-        <%@include file="script.js"%>
+        <%@include file="script.js"%>//TODO?
     </script>
 
 <body class = <% boolean b = false; List<Point> tempList=(ArrayList<Point>)getServletConfig().getServletContext().getAttribute("tempList");

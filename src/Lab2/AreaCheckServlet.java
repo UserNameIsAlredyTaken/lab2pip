@@ -9,19 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AreaCheckServlet extends HttpServlet {
-    private ServletConfig config;
     private List<Point> list=null;
     private List<Point> temporaryList = null;
-    @Override
-    public void init (ServletConfig config) throws ServletException
-    {
-        this.config = config;
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(list==null){
             list=new ArrayList<>();
-            config.getServletContext().setAttribute("list",list);
+            getServletContext().setAttribute("list",list);
         }
         boolean written = true;
         String check = "";
@@ -40,25 +34,24 @@ public class AreaCheckServlet extends HttpServlet {
                 temp.add(new Point(Double.parseDouble(request.getParameter("x")), Double.parseDouble(request.getParameterValues("y")[i]), Integer.parseInt(request.getParameter("r"))));
             }
         }catch (Exception e){
-            config.getServletContext().setAttribute("exception","Значение/я аргументов неверны!");
-
+            getServletContext().setAttribute("exception","Значение/я аргументов неверны!");
             try{if(!request.getParameter("written").equals("yes"))written=false;}catch (Exception ee){written=false;}
             if(written)
-                config.getServletContext().setAttribute("written","yes");
+                getServletContext().setAttribute("written","yes");
             else
-                config.getServletContext().setAttribute("written","no");
+                getServletContext().setAttribute("written","no");
                 request.getServletContext().getRequestDispatcher("/checked.jsp").forward(request,response);
         }
-                config.getServletContext().setAttribute("exception",check);
+            getServletContext().setAttribute("exception",check);
             if(temp.size()!=0) {
                 temporaryList = temp;
-                config.getServletContext().setAttribute("tempList", temporaryList);
+                getServletContext().setAttribute("tempList", temporaryList);
             }
             try{if(!request.getParameter("written").equals("yes"))written=false;}catch (Exception ee){written=false;}
             if(written)
-                config.getServletContext().setAttribute("written","yes");
+                getServletContext().setAttribute("written","yes");
             else
-                config.getServletContext().setAttribute("written","no");
+                getServletContext().setAttribute("written","no");
             request.getServletContext().getRequestDispatcher("/checked.jsp").forward(request,response);
     }
 }
